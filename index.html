@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agro Forte, Futuro Sustentável</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header id="main-header">
+        <div class="logo">
+            <h1>Agro<span>Sustentável</span></h1>
+        </div>
+        <nav id="main-nav">
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#pilares">Pilares</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+        <button id="toggle-dark-mode" aria-label="Alternar modo escuro">🌓 Modo Escuro</button>
+    </header>
+
+    <main>
+        
+        <section id="inicio" class="hero-section">
+            <div class="hero-content">
+                <h2>Equilíbrio entre Produção e Meio Ambiente</h2>
+                <p>O futuro da agricultura depende da nossa capacidade de inovar respeitando a natureza. Conheça as práticas que alimentam o mundo e preservam o planeta.</p>
+                <button id="btn-saiba-mais" class="btn-primary">Saiba Mais</button>
+                <p id="mensagem-dinamica" class="hidden"></p>
+            </div>
+        </section>
+
+        <section id="pilares" class="pilares-section">
+            <div class="section-title">
+                <h3>Nossos Pilares</h3>
+                <p>Como unimos a força do campo à conservação ambiental</p>
+            </div>
+            
+            <div class="cards-container">
+                <article class="card">
+                    <div class="card-image img-tecnologia"></div>
+                    <h4>Tecnologia de Precisão</h4>
+                    <p>Uso de drones e IA para otimizar o uso de água e insumos, reduzindo o desperdício.</p>
+                </article>
+
+                <article class="card">
+                    <div class="card-image img-energia"></div>
+                    <h4>Energia Limpa</h4>
+                    <p>Implementação de matrizes solares e biomassa para mover as operações agrícolas.</p>
+                </article>
+
+                <article class="card">
+                    <div class="card-image img-Solo"></div>
+                    <h4>Manejo Direto</h4>
+                    <p>Técnicas de plantio que preservam os nutrientes do solo e evitam a erosão natural.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="contato" class="contato-section">
+            <h3>Faça Parte do Futuro</h3>
+            <p>Inscreva-se para receber novidades sobre o agronegócio sustentável.</p>
+            
+            <form id="form-contato" novalidate>
+                <div class="form-group">
+                    <input type="text" id="nome" placeholder="Digite seu nome" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" placeholder="Digite seu e-mail" required>
+                </div>
+                <button type="submit" class="btn-submit">Enviar Inscrição</button>
+                <p id="form-feedback" class="feedback-message"></p>
+            </form>
+        </section>
+
+    </main>
+
+    <footer id="main-footer">
+        <p>&copy; 2026 Agro Forte, Futuro Sustentável. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
