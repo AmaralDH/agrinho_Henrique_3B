@@ -1,147 +1,116 @@
-/**
- * Projeto AgroSphere — Script oficial para o Concurso Agrinho 2026
- * Funcionalidades: Dark Mode Inteligente, Simulador do DOM e Validação Estruturada.
- */
-document.addEventListener("DOMContentLoaded", () => {
+// Aguarda o DOM estar totalmente carregado para executar os scripts
+document.addEventListener('DOMContentLoaded', () => {
 
-    // ==========================================
-    // 1. MAPEAMENTO DE ELEMENTOS (CACHE DO DOM)
-    // ==========================================
-    const elements = {
-        darkModeBtn: document.getElementById("dark-mode-toggle"),
-        modeIcon: document.querySelector(".mode-icon"),
-        modeText: document.querySelector(".mode-text"),
-        btnKnowledge: document.getElementById("btn-conhecimento"),
-        factBox: document.getElementById("dynamic-fact-box"),
-        simButtons: document.querySelectorAll(".btn-sim"),
-        simTitle: document.getElementById("sim-title"),
-        simDesc: document.getElementById("sim-description"),
-        mProd: document.getElementById("metric-prod"),
-        mWater: document.getElementById("metric-water"),
-        mCarbon: document.getElementById("metric-carbon"),
-        contactForm: document.getElementById("agro-contact-form"),
-        formAlert: document.getElementById("form-message-alert")
-    };
+    /* ==========================================================================
+       1. CONTROLE DO MODO ESCURO (Dark Mode)
+       ========================================================================== */
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const bodyElement = document.body;
 
-    // ==========================================
-    // 2. BANCO DE DADOS LOCAL (CONTEÚDO DINÂMICO)
-    // ==========================================
-    const fatosAgrinho = [
-        "🚜 Sabia que drones reduzem o uso de agroquímicos em até 80% focando apenas nas plantas doentes?",
-        "☀️ O Paraná é um dos estados que mais investe em energia solar nas propriedades rurais.",
-        "🐛 O uso de pequenas vespas biológicas substitui pesticidas e protege nossa fauna local."
-    ];
-    let indexFato = 0;
+    // Inicializa o texto do botão de acordo com o estado do tema
+    themeToggleBtn.textContent = '🌙 Modo Escuro';
 
-    // Banco de dados para o Simulador Interativo
-    const dadosSimulador = {
-        convencional: {
-            title: "Agricultura Tradicional",
-            desc: "Uso intenso de maquinário sem mapeamento e pulverização em área total.",
-            prod: "+5%", water: "0%", carbon: "+20%",
-            classes: ["color-green", "color-blue", "color-orange"]
-        },
-        precisao: {
-            title: "Tecnologia de Precisão",
-            desc: "Uso de sensores, IA e drones para aplicar água e insumos no local exato.",
-            prod: "+25%", water: "40%", carbon: "-15%",
-            classes: ["color-green", "color-blue", "color-orange"]
-        },
-        regenerativa: {
-            title: "Manejo Regenerativo",
-            desc: "Plantio direto na palha, rotação de culturas e bioinsumos florestais.",
-            prod: "+18%", water: "55%", carbon: "-40%",
-            classes: ["color-green", "color-blue", "color-orange"]
-        }
-    };
-
-    // ==========================================
-    // 3. FUNCIONALIDADE: ALTERNADOR DE MODO ESCURO
-    // ==========================================
-    elements.darkModeBtn.addEventListener("click", () => {
-        const currentTheme = document.documentElement.getAttribute("data-theme");
+    themeToggleBtn.addEventListener('click', () => {
+        bodyElement.classList.toggle('dark-mode');
         
-        if (currentTheme === "dark") {
-            document.documentElement.removeAttribute("data-theme");
-            elements.modeIcon.textContent = "🍃";
-            elements.modeText.textContent = "Modo Sustentável";
+        // Altera visualmente o botão baseado no estado ativo
+        if (bodyElement.classList.contains('dark-mode')) {
+            themeToggleBtn.textContent = '☀️ Modo Claro';
         } else {
-            document.documentElement.setAttribute("data-theme", "dark");
-            elements.modeIcon.textContent = "☀️";
-            elements.modeText.textContent = "Modo Convencional";
+            themeToggleBtn.textContent = '🌙 Modo Escuro';
         }
     });
 
-    // ==========================================
-    // 4. FUNCIONALIDADE: MENSAGENS ROTATIVAS (HERO)
-    // ==========================================
-    elements.btnKnowledge.addEventListener("click", () => {
-        elements.factBox.textContent = fatosAgrinho[indexFato];
-        elements.factBox.classList.remove("hidden");
+    /* ==========================================================================
+       2. MENSAGEM DINÂMICA (Ação do Botão Hero CTA)
+       ========================================================================== */
+    const ctaBtn = document.getElementById('cta-btn');
+    const dynamicMessageSection = document.getElementById('dynamic-message');
+    const dynamicText = document.getElementById('dynamic-text');
+    const closeMsgBtn = document.getElementById('close-msg');
+
+    // Array de fatos dinâmicos sobre o agro sustentável
+    const fatosSustentaveis = [
+        "💡 Sabia que a agricultura de precisão pode reduzir em até 30% o consumo de água no campo?",
+        "🌱 O plantio direto evita a erosão do solo e mantém o carbono estocado na terra.",
+        "🚜 O uso de bioinsumos cresce a cada ano, substituindo defensivos químicos por soluções naturais.",
+        "☀️ Fazendas solares já alimentam sistemas de irrigação inteiros no Brasil de forma 100% limpa."
+    ];
+
+    ctaBtn.addEventListener('click', () => {
+        // Sorteia uma mensagem aleatória do array
+        const randomIndex = Math.floor(Math.random() * fatosSustentaveis.length);
+        dynamicText.textContent = fatosSustentaveis[randomIndex];
         
-        // Loop circular no array
-        indexFato = (indexFato + 1) % fatosAgrinho.length;
-        elements.btnKnowledge.textContent = "Ver Outro Fato Tecnológico";
+        // Remove a classe oculta exibindo a área com a animação CSS
+        dynamicMessageSection.classList.remove('hidden');
     });
 
-    // ==========================================
-    // 5. FUNCIONALIDADE: SIMULADOR INTERATIVO (DOM)
-    // ==========================================
-    elements.simButtons.forEach(button => {
-        button.addEventListener("click", (e) => {
-            // Remove classe ativa de todos
-            elements.simButtons.forEach(btn => btn.classList.remove("active"));
-            // Adiciona no clicado
-            e.target.classList.add("active");
-
-            // Captura o tipo de impacto pelo atributo data
-            const tipo = e.target.getAttribute("data-impacto");
-            const dados = dadosSimulador[tipo];
-
-            // Atualização dinâmica do DOM
-            elements.simTitle.textContent = dados.title;
-            elements.simDesc.textContent = dados.desc;
-            elements.mProd.textContent = dados.prod;
-            elements.mWater.textContent = dados.water;
-            elements.mCarbon.textContent = dados.carbon;
-        });
+    closeMsgBtn.addEventListener('click', () => {
+        dynamicMessageSection.classList.add('hidden');
     });
 
-    // ==========================================
-    // 6. FUNCIONALIDADE: VALIDAÇÃO DO FORMULÁRIO
-    // ==========================================
-    elements.contactForm.addEventListener("submit", (event) => {
-        event.preventDefault(); // Impede o envio real
+    /* ==========================================================================
+       3. VALIDAÇÃO SIMPLES DE FORMULÁRIO (Captura de Leads)
+       ========================================================================== */
+    const leadForm = document.getElementById('lead-form');
+    const inputNome = document.getElementById('nome');
+    const inputEmail = document.getElementById('email');
+    
+    const errorNome = document.getElementById('error-nome');
+    const errorEmail = document.getElementById('error-email');
+    const successBox = document.getElementById('form-success');
 
-        const nome = document.getElementById("user-name").value.trim();
-        const email = document.getElementById("user-email").value.trim();
-
-        // Regra 1: Campos Vazios
-        if (nome === "" || email === "") {
-            dispararFeedback("⚠️ Preencha todos os campos para se registrar.", "#d32f2f");
-            return;
-        }
-
-        // Regra 2: Validação Estruturada do Email via Regex
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(email)) {
-            dispararFeedback("⚠️ Insira um endereço de e-mail válido.", "#d32f2f");
-            return;
-        }
-
-        // Sucesso total
-        dispararFeedback(`🎉 Sucesso! Guia enviado para o e-mail de ${nome.split(' ')[0]}!`, "#2e7d32");
-        elements.contactForm.reset();
-    });
-
-    // Função interna de tratamento de avisos
-    function dispararFeedback(mensagem, cor) {
-        elements.formAlert.textContent = mensagem;
-        elements.formAlert.style.color = cor;
+    leadForm.addEventListener('submit', (event) => {
+        // Previne o envio padrão do formulário que recarregaria a página
+        event.preventDefault();
         
-        // Limpeza automática após 4 segundos
-        setTimeout(() => {
-            elements.formAlert.textContent = "";
-        }, 4000);
-    }
+        let isValid = true;
+
+        // Validação do campo Nome (Não pode estar vazio)
+        if (inputNome.value.trim() === "") {
+            errorNome.style.display = "block";
+            inputNome.style.borderColor = "var(--danger-color)";
+            isValid = false;
+        } else {
+            errorNome.style.display = "none";
+            inputNome.style.borderColor = "var(--primary-color)";
+        }
+
+        // Validação do campo E-mail (Regex básico estrutural)
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(inputEmail.value.trim())) {
+            errorEmail.style.display = "block";
+            inputEmail.style.borderColor = "var(--danger-color)";
+            isValid = false;
+        } else {
+            errorEmail.style.display = "none";
+            inputEmail.style.borderColor = "var(--primary-color)";
+        }
+
+        // Caso todos os campos passem na validação
+        // Caso todos os campos passem na validação
+        if (isValid) {
+            // Captura o primeiro nome para uma saudação personalizada
+            const primeiroNome = inputNome.value.trim().split(' ')[0];
+            
+            // Define o texto de sucesso dinamicamente
+            successBox.innerHTML = `<strong>🎉 Sucesso, ${primeiroNome}!</strong> Sua inscrição foi realizada. Em breve você receberá nossos relatórios.`;
+            
+            // Exibe a caixa de sucesso na tela
+            successBox.style.display = "block";
+            
+            // Limpa os dados digitados no formulário
+            leadForm.reset();
+            
+            // Restaura as cores padrão das bordas dos inputs pós-envio
+            inputNome.style.borderColor = "";
+            inputEmail.style.borderColor = "";
+
+            // Oculta a mensagem de sucesso automaticamente após 5 segundos
+            setTimeout(() => {
+                successBox.style.display = "none";
+            }, 5000);
+        }
+    });
 });
