@@ -3,178 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>AgroSphere — Tecnologia e Sustentabilidade no Campo</title>
-
-    <meta name="description"
-    content="Projeto AgroSphere — tecnologia sustentável no agronegócio brasileiro para o Concurso Agrinho 2026.">
-
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<header id="top-header">
-
-    <div class="logo-area">
-        <h1>Agro<span>Sphere</span></h1>
-    </div>
-
-    <nav id="navigation-menu">
-        <ul>
-            <li><a href="#manifesto">Manifesto</a></li>
-            <li><a href="#simulador">Simulador Eco</a></li>
-            <li><a href="#tecnologias">Inovações</a></li>
-            <li><a href="#engajamento">Aliança</a></li>
-        </ul>
-    </nav>
-
-    <button id="dark-mode-toggle">
-        <span class="mode-icon">🍃</span>
-        <span class="mode-text">Modo Sustentável</span>
-    </button>
-
-</header>
-
-<main>
-
-    <section id="manifesto" class="hero-section">
-
-        <div class="hero-content">
-
-            <span class="top-tag">
-                Agrinho 2026 • Inovação Consciente
-            </span>
-
-            <h2>
-                Produzir com Força, Preservar com Inteligência.
-            </h2>
-
-            <p>
-                O equilíbrio entre a alta produtividade do agronegócio e a regeneração ambiental não é um sonho distante.
-            </p>
-
-            <button id="btn-conhecimento" class="btn-main">
-                Evolução do Campo
-            </button>
-
-            <div id="dynamic-fact-box"
-            class="fact-box hidden"></div>
-
+    <header id="top-header">
+        <div class="logo-area">
+            <div class="logo-icon"></div>
+            <h1>Agro<span>Sphere</span></h1>
         </div>
+        
+        <nav id="navigation-menu">
+            <ul>
+                <li><a href="#manifesto">Manifesto</a></li>
+                <li><a href="#simulador">Simulador Eco</a></li>
+                <li><a href="#tecnologias">Inovações</a></li>
+                <li><a href="#engajamento">Aliança</a></li>
+            </ul>
+        </nav>
 
-        <div class="hero-visual">
+        <button id="dark-mode-toggle" aria-label="Mudar modo de exibição">
+            <span class="mode-icon">🍃</span> 
+            <span class="mode-text">Modo Sustentável</span>
+        </button>
+    </header>
 
-            <div class="hero-image-wrapper">
-
-                <img
-                src="https://images.unsplash.com/photo-1592982537447-744077110947?auto=format&fit=crop&w=800&q=80"
-                alt="Drone sustentável"
-                class="hero-img">
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <section id="simulador" class="simulator-section">
-
-        <div class="section-title text-center">
-
-            <h2>Simulador de Impacto Produtivo</h2>
-
-            <p>
-                Escolha uma prática agrícola e veja os resultados.
-            </p>
-
-        </div>
-
-        <div class="simulator-container">
-
-            <div class="simulator-controls">
-
-                <button class="btn-sim"
-                data-impacto="convencional">
-                    Agricultura Tradicional
-                </button>
-
-                <button class="btn-sim active"
-                data-impacto="precisao">
-                    Tecnologia de Precisão
-                </button>
-
-                <button class="btn-sim"
-                data-impacto="regenerativa">
-                    Manejo Regenerativo
-                </button>
-
-            </div>
-
-            <div class="simulator-display">
-
-                <h3 id="sim-title">
-                    Tecnologia de Precisão
-                </h3>
-
-                <p id="sim-description">
-                    Uso de sensores e IA.
-                </p>
-
-                <div class="metrics-grid">
-
-                    <div class="metric-card">
-                        <span class="metric-label">
-                            Produtividade
-                        </span>
-
-                        <span id="metric-prod"
-                        class="metric-value color-green">
-                            +25%
-                        </span>
-                    </div>
-
-                    <div class="metric-card">
-                        <span class="metric-label">
-                            Economia de Água
-                        </span>
-
-                        <span id="metric-water"
-                        class="metric-value color-blue">
-                            40%
-                        </span>
-                    </div>
-
-                    <div class="metric-card">
-                        <span class="metric-label">
-                            Pegada de Carbono
-                        </span>
-
-                        <span id="metric-carbon"
-                        class="metric-value color-orange">
-                            -15%
-                        </span>
-                    </div>
-
+    <main>
+        
+        <section id="manifesto" class="hero-section">
+            <div class="hero-content">
+                <span class="top-tag">Agrinho 2026 • Inovação Consciente</span>
+                <h2>Produzir com Força, Preservar com Inteligência.</h2>
+                <p>O equilíbrio entre a alta produtividade do agronegócio e a regeneração ambiental não é um sonho distante — é a realidade que estamos construindo hoje através da tecnologia limpa.</p>
+                <div class="hero-buttons">
+                    <button id="btn-conhecimento" class="btn-main">Evolução do Campo</button>
                 </div>
+                <div id="dynamic-fact-box" class="fact-box hidden"></div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1592982537447-744077110947?auto=format&fit=crop&w=800&q=80" alt="Drone sobrevoando plantação sustentável" class="hero-img">
+                </div>
+            </div>
+        </section>
 
+        <section id="simulador" class="simulator-section">
+            <div class="section-title text-center">
+                <h2>Simulador de Impacto Produtivo</h2>
+                <p>Escolha uma prática agrícola e veja em tempo real o equilíbrio entre produção e proteção à natureza.</p>
             </div>
 
+            <div class="simulator-container">
+                <div class="simulator-controls">
+                    <button class="btn-sim" data-impacto="convencional">Agricultura Tradicional</button>
+                    <button class="btn-sim active" data-impacto="precisao">Tecnologia de Precisão</button>
+                    <button class="btn-sim" data-impacto="regenerativa">Manejo Regenerativo</button>
+                </div>
+                
+                <div class="simulator-display">
+                    <h3 id="sim-title">Tecnologia de Precisão</h3>
+                    <p id="sim-description">Uso de sensores e IA para aplicar água e insumos apenas onde necessário.</p>
+                    
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <span class="metric-label">Produtividade</span>
+                            <span id="metric-prod" class="metric-value color-green">+25%</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-label">Economia de Água</span>
+                            <span id="metric-water" class="metric-value color-blue">40%</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-label">Pegada de Carbono</span>
+                            <span id="metric-carbon" class="metric-value color-orange">-15%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tecnologias" class="cards-section">
+            <div class="section-title">
+                <h2>Pilares do Futuro Sustentável</h2>
+                <p>Como a ciência transforma o trabalho do produtor rural brasileiro.</p>
+            </div>
+
+            <div class="cards-flex-container">
+                <article class="tech-card">
+                    <div class="card-img-header img-bio"></div>
+                    <div class="card-info">
+                        <h3>Defensivos Biológicos</h3>
+                        <p>O uso de inimigos naturais e bioinsumos elimina pragas sem contaminar o lençol freático ou desgastar o solo fértil.</p>
+                    </div>
+                </article>
+
+                <article class="tech-card">
+                    <div class="card-img-header img-solar"></div>
+                    <div class="card-info">
+                        <h3>Matriz Energética Limpa</h3>
+                        <p>Fazendas autossuficientes movidas a energia solar e biomassa reduzem drasticamente os custos e as emissões de gases.</p>
+                    </div>
+                </article>
+
+                <article class="tech-card">
+                    <div class="card-img-header img-solos"></div>
+                    <div class="card-info">
+                        <h3>Plantio Direto & Rotação</h3>
+                        <p>Manter a cobertura do solo com restos vegetais preserva a umidade, evita a erosão e captura carbono de forma natural.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="engajamento" class="form-section">
+            <div class="form-wrapper">
+                <div class="form-text">
+                    <h2>Entre para a Aliança AgroSphere</h2>
+                    <p>Quer transformar sua comunidade ou escola com práticas agrícolas ecológicas? Inscreva-se e receba nosso guia prático de compostagem e monitoramento ambiental escolar.</p>
+                </div>
+                
+                <div class="form-box">
+                    <form id="agro-contact-form" novalidate>
+                        <div class="input-group">
+                            <label for="user-name">Nome Completo</label>
+                            <input type="text" id="user-name" placeholder="Ex: Maria Silva" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="user-email">E-mail para contato</label>
+                            <input type="email" id="user-email" placeholder="nome@escola.com" required>
+                        </div>
+                        <button type="submit" class="btn-submit">Solicitar Material Gratuito</button>
+                    </form>
+                    <p id="form-message-alert" class="alert-box"></p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="main-footer">
+        <div class="footer-container">
+            <p>&copy; 2026 AgroSphere — Projeto desenvolvido para o Concurso Agrinho 2026.</p>
+            <p class="credits">Tema: Agro forte, futuro sustentável: equilíbrio entre produção e meio ambiente.</p>
         </div>
+    </footer>
 
-    </section>
-
-</main>
-
-<footer id="main-footer">
-
-    <p>
-        © 2026 AgroSphere — Projeto Agrinho.
-    </p>
-
-</footer>
-
-<script src="script.js"></script>
-
+    <script src="script.js"></script>
 </body>
 </html>
