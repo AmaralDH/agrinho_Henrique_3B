@@ -1,428 +1,462 @@
 /* ==========================================================================
-   PALETA DE CORES E VARIÁVEIS (Identidade Visual Ecológica Moderna)
+   PALETA DE CORES E IDENTIDADE VISUAL (Eco-Tech Premium)
    ========================================================================== */
 :root {
-    --cor-fundo: #f4fcf7;
-    --cor-superficie: #ffffff;
-    --cor-texto: #1e3327;
-    --cor-texto-suave: #526e5d;
+    --bg-main: #f4f7f5;
+    --bg-card: #ffffff;
+    --text-primary: #1b2e24;
+    --text-secondary: #52665a;
     
-    /* Cores de Marca */
-    --verde-principal: #1b8a5a;
-    --verde-claro: #2ecc71;
-    --laranja-terra: #e67e22;
-    --cor-borda: #d1ebd9;
+    /* Cores Temáticas */
+    --color-emerald: #1b5e20;
+    --color-leaf: #2e7d32;
+    --color-accent: #e65100; /* Terracota/Laranja representando a terra */
+    --color-blue-tech: #0288d1;
     
-    /* Configurações de transição */
-    --transicao: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    /* Estrutura */
+    --border-line: #e0e6e2;
+    --radius: 12px;
+    --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow: 0 8px 24px rgba(27, 46, 36, 0.05);
 }
 
-/* Paleta Modificada via Atributo para o Modo Escuro */
-[data-tema="dark"] {
-    --cor-fundo: #0d1a13;
-    --cor-superficie: #162a1f;
-    --cor-texto: #e2f3e9;
-    --cor-texto-suave: #a3c2b0;
-    --verde-principal: #2ecc71;
-    --cor-borda: #254432;
+/* Identidade Visual - Modo Escuro (Atmosfera Noturna) */
+[data-theme="dark"] {
+    --bg-main: #0b120e;
+    --bg-card: #131e18;
+    --text-primary: #e3ece7;
+    --text-secondary: #9cb1a5;
+    --color-emerald: #4caf50;
+    --color-leaf: #81c784;
+    --border-line: #22352a;
+    --shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
-/* RESET GLOBAL */
+/* ==========================================================================
+   ESTILOS GERAIS DE RESET
+   ========================================================================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    background-color: var(--cor-fundo);
-    color: var(--cor-texto);
-    transition: var(--transicao);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    transition: var(--transition);
     line-height: 1.6;
 }
 
 /* ==========================================================================
-   HEADER E MENU (Uso de Flexbox conforme regra)
+   HEADER E MENU DE NAVEGAÇÃO (FLEXBOX)
    ========================================================================== */
-#header-principal {
+#top-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1.2rem 8%;
-    background-color: var(--cor-superficie);
-    border-bottom: 2px solid var(--cor-borda);
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-line);
     position: sticky;
     top: 0;
-    z-index: 100;
-    transition: var(--transicao);
+    z-index: 1000;
+    transition: var(--transition);
 }
 
-.logo-container {
+[data-theme="dark"] #top-header {
+    background-color: rgba(19, 30, 24, 0.85);
+}
+
+.logo-area {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.logo-icone {
-    font-size: 1.8rem;
+.logo-area h1 {
+    font-size: 1.4rem;
+    font-weight: 800;
 }
 
-.logo-container h1 {
-    font-size: 1.5rem;
-    font-weight: 700;
+.logo-area h1 span {
+    color: var(--color-emerald);
 }
 
-.logo-container h1 span {
-    color: var(--verde-principal);
-}
-
-#menu-navegacao ul {
+#navigation-menu ul {
     display: flex;
     list-style: none;
     gap: 2rem;
 }
 
-#menu-navegacao a {
+#navigation-menu a {
     text-decoration: none;
-    color: var(--cor-texto-suave);
+    color: var(--text-secondary);
     font-weight: 600;
-    font-size: 1rem;
-    transition: var(--transicao);
+    transition: var(--transition);
 }
 
-#menu-navegacao a:hover {
-    color: var(--verde-principal);
+#navigation-menu a:hover {
+    color: var(--color-emerald);
 }
 
-/* Botão de Troca de Tema */
-.btn-atmosfera {
-    background-color: var(--cor-fundo);
-    color: var(--cor-texto);
-    border: 1px solid var(--cor-borda);
-    padding: 0.5rem 1.2rem;
-    border-radius: 25px;
+/* Botão Modo Escuro Personalizado */
+#dark-mode-toggle {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    border: 1px solid var(--border-line);
+    padding: 0.6rem 1.2rem;
+    border-radius: 30px;
     cursor: pointer;
     font-weight: 600;
     display: flex;
     align-items: center;
     gap: 8px;
-    transition: var(--transicao);
+    transition: var(--transition);
+    box-shadow: var(--shadow);
 }
 
-.btn-atmosfera:hover {
-    transform: scale(1.05);
-    border-color: var(--verde-principal);
-}
-
-/* ==========================================================================
-   HERO BANNER
-   ========================================================================== */
-#banner-hero {
-    background: linear-gradient(rgba(13, 26, 19, 0.75), rgba(13, 26, 19, 0.75)), 
-                url('https://images.unsplash.com/photo-1625246333195-78d9c38ad451?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
-    padding: 8rem 8%;
-    text-align: center;
-    color: #ffffff;
-}
-
-.tag-evento {
-    background-color: var(--laranja-terra);
-    padding: 0.3rem 1rem;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
-.hero-conteudo h2 {
-    font-size: 2.8rem;
-    margin: 1.5rem 0;
-    line-height: 1.2;
-}
-
-.hero-conteudo p {
-    font-size: 1.2rem;
-    max-width: 700px;
-    margin: 0 auto 2.5rem auto;
-    opacity: 0.9;
-}
-
-.btn-chamada {
-    display: inline-block;
-    background-color: var(--verde-principal);
-    color: white;
-    text-decoration: none;
-    padding: 1rem 2rem;
-    border-radius: 8px;
-    font-weight: 700;
-    box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
-    transition: var(--transicao);
-}
-
-.btn-chamada:hover {
-    background-color: var(--verde-claro);
-    transform: translateY(-3px);
+#dark-mode-toggle:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-emerald);
 }
 
 /* ==========================================================================
-   SEÇÃO DOS CARDS (Flexbox Responsivo)
+   SEÇÃO MANIFESTO (HERO) - LAYOUT DINÂMICO
    ========================================================================== */
-.secao-cards {
-    padding: 5rem 8%;
-}
-
-.titulo-secao {
-    text-align: center;
-    margin-bottom: 3.5rem;
-}
-
-.titulo-secao h2 {
-    font-size: 2.2rem;
-    color: var(--verde-principal);
-}
-
-.container-flex-cards {
+.hero-section {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    gap: 2rem;
-    flex-wrap: wrap;
+    padding: 5rem 8%;
+    gap: 3rem;
 }
 
-.card-tecnologico {
-    background-color: var(--cor-superficie);
-    border: 1px solid var(--cor-borda);
-    flex: 1 1 calc(33.333% - 2rem);
-    min-width: 280px;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-    transition: var(--transicao);
+.hero-content {
+    flex: 1;
+    max-width: 550px;
 }
 
-.card-tecnologico:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 24px rgba(27, 138, 90, 0.12);
-    border-color: var(--verde-principal);
+.top-tag {
+    color: var(--color-accent);
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-.imagem-card {
-    height: 200px;
-    background-size: cover;
-    background-position: center;
+.hero-content h2 {
+    font-size: 2.8rem;
+    line-height: 1.2;
+    margin: 1rem 0;
+    letter-spacing: -1px;
 }
 
-/* Imagens Ilustrativas do Banco Unsplash */
-.pic-drone { background-image: url('https://images.unsplash.com/photo-1527525443983-6e60c75ffe4b?auto=format&fit=crop&w=500&q=80'); }
-.pic-agua { background-image: url('https://images.unsplash.com/photo-1563514223741-21b455043743?auto=format&fit=crop&w=500&q=80'); }
-.pic-solo { background-image: url('https://images.unsplash.com/photo-1593113630400-ea4288922497?auto=format&fit=crop&w=500&q=80'); }
-
-.info-card {
-    padding: 1.5rem;
-}
-
-.info-card h3 {
-    margin-bottom: 0.5rem;
-    font-size: 1.3rem;
-}
-
-.info-card p {
-    color: var(--cor-texto-suave);
-    font-size: 0.95rem;
-}
-
-/* ==========================================================================
-   SIMULADOR INTERATIVO E FATOS (Funcionalidades Extras)
-   ========================================================================== */
-.secao-simulador, .secao-fatos {
-    padding: 4rem 8%;
-    background-color: var(--cor-superficie);
+.hero-content p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
     margin-bottom: 2rem;
-    border-top: 1px solid var(--cor-borda);
-    border-bottom: 1px solid var(--cor-borda);
-    text-align: center;
 }
 
-.simulador-box {
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.campo-simulador {
-    margin-top: 1.5rem;
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-}
-
-.campo-simulador input {
-    padding: 0.8rem;
-    border: 2px solid var(--cor-borda);
-    border-radius: 6px;
-    width: 150px;
-    font-size: 1rem;
-    outline: none;
-    background-color: var(--cor-fundo);
-    color: var(--cor-texto);
-}
-
-#btn-calcular, #btn-gerar-fato {
-    background-color: var(--verde-principal);
+.btn-main {
+    background-color: var(--color-emerald);
     color: white;
     border: none;
-    padding: 0.8rem 1.5rem;
+    padding: 1rem 2rem;
+    font-size: 1rem;
     font-weight: 600;
-    border-radius: 6px;
+    border-radius: var(--radius);
     cursor: pointer;
-    transition: var(--transicao);
+    transition: var(--transition);
 }
 
-#btn-calcular:hover, #btn-gerar-fato:hover {
-    background-color: var(--laranja-terra);
+.btn-main:hover {
+    background-color: var(--color-leaf);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(46, 125, 50, 0.3);
 }
 
-.resultado-visivel, .fato-visivel {
+/* Animação de Mensagem Dinâmica */
+.fact-box {
     margin-top: 1.5rem;
-    padding: 1rem;
-    background-color: var(--cor-fundo);
-    border-left: 4px solid var(--verde-principal);
-    border-radius: 4px;
-    font-weight: 600;
-    animation: surgimento 0.4s ease-out;
+    padding: 1.2rem;
+    background-color: var(--bg-card);
+    border-left: 4px solid var(--color-accent);
+    border-radius: 4px var(--radius) var(--radius) 4px;
+    box-shadow: var(--shadow);
+    font-weight: 500;
+    animation: fadeIn 0.4s ease forwards;
 }
 
-.resultado-oculto, .fato-oculto {
-    display: none;
-}
+.hidden { display: none; }
 
-@keyframes surgimento {
+@keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
+.hero-visual {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-image-wrapper {
+    width: 100%;
+    max-width: 480px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.hero-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: var(--transition);
+}
+
+.hero-img:hover {
+    transform: scale(1.04);
+}
+
 /* ==========================================================================
-   FORMULÁRIO DE CONTATO E GUIA
+   SEÇÃO SIMULADOR INTERATIVO
    ========================================================================== */
-.secao-contato {
+.simulator-section {
     padding: 5rem 8%;
+    background-color: var(--bg-card);
+    transition: var(--transition);
 }
 
-.formulario-container {
-    max-width: 500px;
+.text-center { text-align: center; margin-bottom: 3rem; }
+.section-title h2 { font-size: 2.2rem; margin-bottom: 0.5rem; }
+.section-title p { color: var(--text-secondary); }
+
+.simulator-container {
+    max-width: 800px;
     margin: 0 auto;
-    background-color: var(--cor-superficie);
-    padding: 2.5rem;
-    border-radius: 12px;
-    border: 1px solid var(--cor-borda);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.01);
+    border: 1px solid var(--border-line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
 }
 
-.grupo-input {
-    margin-top: 1.2rem;
+.simulator-controls {
+    display: flex;
+    background-color: var(--bg-main);
+    border-bottom: 1px solid var(--border-line);
+}
+
+.btn-sim {
+    flex: 1;
+    padding: 1.2rem;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-sim.active {
+    background-color: var(--bg-card);
+    color: var(--color-emerald);
+    border-bottom: 3px solid var(--color-emerald);
+}
+
+.simulator-display {
+    padding: 3rem;
+    text-align: center;
+}
+
+.simulator-display p {
+    color: var(--text-secondary);
+    margin: 0.8rem 0 2rem 0;
+}
+
+.metrics-grid {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.metric-card {
+    flex: 1;
+    padding: 1.5rem;
+    background-color: var(--bg-main);
+    border-radius: var(--radius);
     display: flex;
     flex-direction: column;
-    text-align: left;
     gap: 5px;
 }
 
-.grupo-input label {
-    font-weight: 600;
-    font-size: 0.9rem;
+.metric-label { font-size: 0.85rem; color: var(--text-secondary); font-weight: 500; }
+.metric-value { font-size: 1.6rem; font-weight: 800; }
+
+.color-green { color: var(--color-leaf); }
+.color-blue { color: var(--color-blue-tech); }
+.color-orange { color: var(--color-accent); }
+
+/* ==========================================================================
+   SEÇÃO CARDS (PILAREES) - FLEXBOX COMPLETO
+   ========================================================================== */
+.cards-section {
+    padding: 5rem 8%;
 }
 
-.grupo-input input {
+.cards-flex-container {
+    display: flex;
+    gap: 2rem;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+}
+
+.tech-card {
+    background-color: var(--bg-card);
+    flex: 1 1 calc(33.333% - 2rem);
+    min-width: 280px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-line);
+    transition: var(--transition);
+}
+
+.tech-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-header {
+    height: 180px;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Imagens Autorais via Unsplash (Tema: Campo e Sustentabilidade) */
+.img-bio { background-image: url('https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?auto=format&fit=crop&w=500&q=80'); }
+.img-solar { background-image: url('https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=500&q=80'); }
+.img-solos { background-image: url('https://images.unsplash.com/photo-1622383563227-04401ab4e5ea?auto=format&fit=crop&w=500&q=80'); }
+
+.card-info {
+    padding: 1.5rem;
+}
+
+.card-info h3 { font-size: 1.25rem; margin-bottom: 0.5rem; }
+.card-info p { color: var(--text-secondary); font-size: 0.95rem; }
+
+/* ==========================================================================
+   SEÇÃO FORMULÁRIO E VALIDAÇÃO
+   ========================================================================== */
+.form-section {
+    padding: 5rem 8%;
+    background-color: var(--bg-card);
+    transition: var(--transition);
+}
+
+.form-wrapper {
+    display: flex;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    gap: 4rem;
+}
+
+.form-text { flex: 1; }
+.form-text h2 { font-size: 2.2rem; margin-bottom: 1rem; }
+.form-text p { color: var(--text-secondary); }
+
+.form-box {
+    flex: 1;
+    background-color: var(--bg-main);
+    padding: 2.5rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-line);
+}
+
+#agro-contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.input-group label { font-size: 0.9rem; font-weight: 600; color: var(--text-secondary); }
+.input-group input {
     padding: 0.8rem;
-    border: 1px solid var(--cor-borda);
+    font-size: 1rem;
+    border: 1px solid var(--border-line);
     border-radius: 6px;
-    background-color: var(--cor-fundo);
-    color: var(--cor-texto);
+    background-color: var(--bg-card);
+    color: var(--text-primary);
     outline: none;
+    transition: var(--transition);
 }
 
-.grupo-input input:focus {
-    border-color: var(--verde-principal);
+.input-group input:focus {
+    border-color: var(--color-emerald);
 }
 
-.btn-enviar {
-    width: 100%;
-    margin-top: 1.5rem;
-    padding: 1rem;
-    background-color: var(--laranja-terra);
+.btn-submit {
+    background-color: var(--color-emerald);
     color: white;
     border: none;
-    border-radius: 6px;
+    padding: 1rem;
+    font-size: 1rem;
     font-weight: 700;
+    border-radius: 6px;
     cursor: pointer;
-    transition: var(--transicao);
+    transition: var(--transition);
 }
 
-.btn-enviar:hover {
-    background-color: #d35400;
-}
+.btn-submit:hover { background-color: var(--color-leaf); }
 
-#feedback-formulario {
+.alert-box {
     margin-top: 1rem;
     font-weight: 600;
+    text-align: center;
 }
 
 /* ==========================================================================
    FOOTER
    ========================================================================== */
-#footer-desenvolvedores {
-    background-color: var(--cor-superficie);
-    border-top: 2px solid var(--cor-borda);
-    padding: 2rem;
+#main-footer {
+    background-color: #111b15;
+    color: #a3b8ad;
+    padding: 2rem 8%;
     text-align: center;
     font-size: 0.9rem;
-    color: var(--cor-texto-suave);
 }
+
+.credits { margin-top: 5px; opacity: 0.7; font-size: 0.8rem; }
 
 /* ==========================================================================
-   MEDIA QUERIES (Responsividade Absoluta)
+   MEDIA QUERIES (TOTAL RESPONSIVIDADE)
    ========================================================================== */
 
-/* Tablets (Telas de até 768px) */
-@media (max-width: 768px) {
-    #header-principal {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-    }
-    
-    #menu-navegacao ul {
-        gap: 1.2rem;
-    }
-
-    .hero-conteudo h2 {
-        font-size: 2rem;
-    }
-
-    .card-tecnologico {
-        flex: 1 1 calc(50% - 1rem); /* Divide em 2 colunas */
-    }
+/* Tablets (Telas até 992px) */
+@media (max-width: 992px) {
+    .hero-section { flex-direction: column; text-align: center; padding: 4rem 5%; }
+    .hero-content { max-width: 100%; }
+    .form-wrapper { flex-direction: column; gap: 2rem; }
+    .tech-card { flex: 1 1 calc(50% - 1rem); }
 }
 
-/* Celulares (Telas de até 480px) */
-@media (max-width: 480px) {
-    #menu-navegacao ul {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-
-    .hero-conteudo h2 {
-        font-size: 1.6rem;
-    }
-
-    .card-tecnologico {
-        flex: 1 1 100%; /* Ocupa a largura inteira (1 coluna) */
-    }
-
-    .campo-simulador {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .campo-simulador input {
-        width: 100%;
-    }
+/* Celulares (Telas até 768px) */
+@media (max-width: 768px) {
+    #top-header { flex-direction: column; gap: 1rem; text-align: center; }
+    #navigation-menu ul { gap: 1.2rem; }
+    .hero-content h2 { font-size: 2rem; }
+    .metrics-grid { flex-direction: column; }
+    .tech-card { flex: 1 1 100%; }
+    .form-box { padding: 1.5rem; }
 }
